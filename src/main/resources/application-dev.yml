@@ -5,7 +5,7 @@ spring:
   datasource:
     username: root
     password: root
-    url: jdbc:mysql://127.0.0.1:3306/jaunty?autoReconnect=true&characterEncoding=UTF-8&useUnicode=true&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://127.0.0.1:3306/jaunty-light?autoReconnect=true&characterEncoding=UTF-8&useUnicode=true&serverTimezone=Asia/Shanghai
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 # 日志配置
