@@ -1,0 +1,9 @@
+spring:
+  profiles:
+    active: dev #当前激活环境
+  application:
+    name: jaunty-light-services #应用名称
+
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
+  type-aliases-package: com.jaunty.domain.entity
