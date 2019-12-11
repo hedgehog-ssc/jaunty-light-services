@@ -6,7 +6,7 @@
     <result column="parent_id" jdbcType="BIGINT" property="parentId" />
     <result column="menu_type" jdbcType="CHAR" property="menuType" />
     <result column="menu_name" jdbcType="VARCHAR" property="menuName" />
-    <result column="menu_icon" jdbcType="VARCHAR" property="menuIcon" />
+    <result column="icon" jdbcType="VARCHAR" property="icon" />
     <result column="seq" jdbcType="TINYINT" property="seq" />
     <result column="permissions" jdbcType="VARCHAR" property="permissions" />
     <result column="remark" jdbcType="VARCHAR" property="remark" />
@@ -17,8 +17,8 @@
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, parent_id, menu_type, menu_name, menu_icon, seq, permissions, remark, dflag, 
-    create_user_id, create_time, update_user_id, update_time
+    id, parent_id, menu_type, menu_name, icon, seq, permissions, remark, dflag, create_user_id, 
+    create_time, update_user_id, update_time
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
@@ -35,12 +35,12 @@
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into s_menu (parent_id, menu_type, menu_name, 
-      menu_icon, seq, permissions, 
+      icon, seq, permissions, 
       remark, dflag, create_user_id, 
       create_time, update_user_id, update_time
       )
     values (#{parentId,jdbcType=BIGINT}, #{menuType,jdbcType=CHAR}, #{menuName,jdbcType=VARCHAR}, 
-      #{menuIcon,jdbcType=VARCHAR}, #{seq,jdbcType=TINYINT}, #{permissions,jdbcType=VARCHAR}, 
+      #{icon,jdbcType=VARCHAR}, #{seq,jdbcType=TINYINT}, #{permissions,jdbcType=VARCHAR}, 
       #{remark,jdbcType=VARCHAR}, #{dflag,jdbcType=BIT}, #{createUserId,jdbcType=BIGINT}, 
       #{createTime,jdbcType=TIMESTAMP}, #{updateUserId,jdbcType=BIGINT}, #{updateTime,jdbcType=TIMESTAMP}
       )
@@ -60,8 +60,8 @@
       <if test="menuName != null">
         menu_name,
       </if>
-      <if test="menuIcon != null">
-        menu_icon,
+      <if test="icon != null">
+        icon,
       </if>
       <if test="seq != null">
         seq,
@@ -98,8 +98,8 @@
       <if test="menuName != null">
         #{menuName,jdbcType=VARCHAR},
       </if>
-      <if test="menuIcon != null">
-        #{menuIcon,jdbcType=VARCHAR},
+      <if test="icon != null">
+        #{icon,jdbcType=VARCHAR},
       </if>
       <if test="seq != null">
         #{seq,jdbcType=TINYINT},
@@ -139,8 +139,8 @@
       <if test="menuName != null">
         menu_name = #{menuName,jdbcType=VARCHAR},
       </if>
-      <if test="menuIcon != null">
-        menu_icon = #{menuIcon,jdbcType=VARCHAR},
+      <if test="icon != null">
+        icon = #{icon,jdbcType=VARCHAR},
       </if>
       <if test="seq != null">
         seq = #{seq,jdbcType=TINYINT},
@@ -174,7 +174,7 @@
     set parent_id = #{parentId,jdbcType=BIGINT},
       menu_type = #{menuType,jdbcType=CHAR},
       menu_name = #{menuName,jdbcType=VARCHAR},
-      menu_icon = #{menuIcon,jdbcType=VARCHAR},
+      icon = #{icon,jdbcType=VARCHAR},
       seq = #{seq,jdbcType=TINYINT},
       permissions = #{permissions,jdbcType=VARCHAR},
       remark = #{remark,jdbcType=VARCHAR},
