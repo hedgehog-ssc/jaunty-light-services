@@ -103,12 +103,5 @@
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
 
-        <table tableName="s_menu" enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false" schema="root">
-            <property name="useActualColumnNames" value="false"/>
-            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
-        </table>
-
     </context>
 </generatorConfiguration>

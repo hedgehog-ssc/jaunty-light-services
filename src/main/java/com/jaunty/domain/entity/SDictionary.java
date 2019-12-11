@@ -7,7 +7,7 @@ public class SDictionary {
 
     private Long parentId;
 
-    private String dicCode;
+    private String dicKey;
 
     private String dicValue;
 
@@ -39,12 +39,12 @@ public class SDictionary {
         this.parentId = parentId;
     }
 
-    public String getDicCode() {
-        return dicCode;
+    public String getDicKey() {
+        return dicKey;
     }
 
-    public void setDicCode(String dicCode) {
-        this.dicCode = dicCode == null ? null : dicCode.trim();
+    public void setDicKey(String dicKey) {
+        this.dicKey = dicKey == null ? null : dicKey.trim();
     }
 
     public String getDicValue() {

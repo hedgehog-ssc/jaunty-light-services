@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.jaunty.domain.entity.SDictionary">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="parent_id" jdbcType="BIGINT" property="parentId" />
-    <result column="dic_code" jdbcType="VARCHAR" property="dicCode" />
+    <result column="dic_key" jdbcType="VARCHAR" property="dicKey" />
     <result column="dic_value" jdbcType="VARCHAR" property="dicValue" />
     <result column="seq" jdbcType="TINYINT" property="seq" />
     <result column="dflag" jdbcType="BIT" property="dflag" />
@@ -14,7 +14,7 @@
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, parent_id, dic_code, dic_value, seq, dflag, create_user_id, create_time, update_user_id, 
+    id, parent_id, dic_key, dic_value, seq, dflag, create_user_id, create_time, update_user_id, 
     update_time
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
@@ -31,11 +31,11 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into s_dictionary (parent_id, dic_code, dic_value, 
+    insert into s_dictionary (parent_id, dic_key, dic_value, 
       seq, dflag, create_user_id, 
       create_time, update_user_id, update_time
       )
-    values (#{parentId,jdbcType=BIGINT}, #{dicCode,jdbcType=VARCHAR}, #{dicValue,jdbcType=VARCHAR}, 
+    values (#{parentId,jdbcType=BIGINT}, #{dicKey,jdbcType=VARCHAR}, #{dicValue,jdbcType=VARCHAR}, 
       #{seq,jdbcType=TINYINT}, #{dflag,jdbcType=BIT}, #{createUserId,jdbcType=BIGINT}, 
       #{createTime,jdbcType=TIMESTAMP}, #{updateUserId,jdbcType=BIGINT}, #{updateTime,jdbcType=TIMESTAMP}
       )
@@ -49,8 +49,8 @@
       <if test="parentId != null">
         parent_id,
       </if>
-      <if test="dicCode != null">
-        dic_code,
+      <if test="dicKey != null">
+        dic_key,
       </if>
       <if test="dicValue != null">
         dic_value,
@@ -78,8 +78,8 @@
       <if test="parentId != null">
         #{parentId,jdbcType=BIGINT},
       </if>
-      <if test="dicCode != null">
-        #{dicCode,jdbcType=VARCHAR},
+      <if test="dicKey != null">
+        #{dicKey,jdbcType=VARCHAR},
       </if>
       <if test="dicValue != null">
         #{dicValue,jdbcType=VARCHAR},
@@ -110,8 +110,8 @@
       <if test="parentId != null">
         parent_id = #{parentId,jdbcType=BIGINT},
       </if>
-      <if test="dicCode != null">
-        dic_code = #{dicCode,jdbcType=VARCHAR},
+      <if test="dicKey != null">
+        dic_key = #{dicKey,jdbcType=VARCHAR},
       </if>
       <if test="dicValue != null">
         dic_value = #{dicValue,jdbcType=VARCHAR},
@@ -140,7 +140,7 @@
   <update id="updateByPrimaryKey" parameterType="com.jaunty.domain.entity.SDictionary">
     update s_dictionary
     set parent_id = #{parentId,jdbcType=BIGINT},
-      dic_code = #{dicCode,jdbcType=VARCHAR},
+      dic_key = #{dicKey,jdbcType=VARCHAR},
       dic_value = #{dicValue,jdbcType=VARCHAR},
       seq = #{seq,jdbcType=TINYINT},
       dflag = #{dflag,jdbcType=BIT},
