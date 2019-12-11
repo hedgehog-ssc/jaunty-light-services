@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jaunty.dao.SDictionaryMapper">
+  <resultMap id="BaseResultMap" type="com.jaunty.domain.entity.SDictionary">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="parent_id" jdbcType="BIGINT" property="parentId" />
+    <result column="dic_code" jdbcType="VARCHAR" property="dicCode" />
+    <result column="dic_value" jdbcType="VARCHAR" property="dicValue" />
+    <result column="seq" jdbcType="TINYINT" property="seq" />
+    <result column="dflag" jdbcType="BIT" property="dflag" />
+    <result column="create_user_id" jdbcType="BIGINT" property="createUserId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_user_id" jdbcType="BIGINT" property="updateUserId" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, parent_id, dic_code, dic_value, seq, dflag, create_user_id, create_time, update_user_id, 
+    update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from s_dictionary
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from s_dictionary
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.jaunty.domain.entity.SDictionary">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into s_dictionary (parent_id, dic_code, dic_value, 
+      seq, dflag, create_user_id, 
+      create_time, update_user_id, update_time
+      )
+    values (#{parentId,jdbcType=BIGINT}, #{dicCode,jdbcType=VARCHAR}, #{dicValue,jdbcType=VARCHAR}, 
+      #{seq,jdbcType=TINYINT}, #{dflag,jdbcType=BIT}, #{createUserId,jdbcType=BIGINT}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateUserId,jdbcType=BIGINT}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jaunty.domain.entity.SDictionary">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into s_dictionary
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="parentId != null">
+        parent_id,
+      </if>
+      <if test="dicCode != null">
+        dic_code,
+      </if>
+      <if test="dicValue != null">
+        dic_value,
+      </if>
+      <if test="seq != null">
+        seq,
+      </if>
+      <if test="dflag != null">
+        dflag,
+      </if>
+      <if test="createUserId != null">
+        create_user_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateUserId != null">
+        update_user_id,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="parentId != null">
+        #{parentId,jdbcType=BIGINT},
+      </if>
+      <if test="dicCode != null">
+        #{dicCode,jdbcType=VARCHAR},
+      </if>
+      <if test="dicValue != null">
+        #{dicValue,jdbcType=VARCHAR},
+      </if>
+      <if test="seq != null">
+        #{seq,jdbcType=TINYINT},
+      </if>
+      <if test="dflag != null">
+        #{dflag,jdbcType=BIT},
+      </if>
+      <if test="createUserId != null">
+        #{createUserId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null">
+        #{updateUserId,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jaunty.domain.entity.SDictionary">
+    update s_dictionary
+    <set>
+      <if test="parentId != null">
+        parent_id = #{parentId,jdbcType=BIGINT},
+      </if>
+      <if test="dicCode != null">
+        dic_code = #{dicCode,jdbcType=VARCHAR},
+      </if>
+      <if test="dicValue != null">
+        dic_value = #{dicValue,jdbcType=VARCHAR},
+      </if>
+      <if test="seq != null">
+        seq = #{seq,jdbcType=TINYINT},
+      </if>
+      <if test="dflag != null">
+        dflag = #{dflag,jdbcType=BIT},
+      </if>
+      <if test="createUserId != null">
+        create_user_id = #{createUserId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null">
+        update_user_id = #{updateUserId,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jaunty.domain.entity.SDictionary">
+    update s_dictionary
+    set parent_id = #{parentId,jdbcType=BIGINT},
+      dic_code = #{dicCode,jdbcType=VARCHAR},
+      dic_value = #{dicValue,jdbcType=VARCHAR},
+      seq = #{seq,jdbcType=TINYINT},
+      dflag = #{dflag,jdbcType=BIT},
+      create_user_id = #{createUserId,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_user_id = #{updateUserId,jdbcType=BIGINT},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.jaunty.domain.entity.SDictionary">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="pid" jdbcType="INTEGER" property="pid" />
+    <result column="dicType" jdbcType="INTEGER" property="dictype" />
+    <result column="dicCode" jdbcType="VARCHAR" property="diccode" />
+    <result column="dicValue" jdbcType="VARCHAR" property="dicvalue" />
+    <result column="seq" jdbcType="INTEGER" property="seq" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="date" jdbcType="TIMESTAMP" property="date" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, pid, dicType, dicCode, dicValue, seq, remark, `date`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from s_dictionary
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from s_dictionary
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jaunty.domain.entity.SDictionary">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into s_dictionary (pid, dicType, dicCode, 
+      dicValue, seq, remark, 
+      `date`)
+    values (#{pid,jdbcType=INTEGER}, #{dictype,jdbcType=INTEGER}, #{diccode,jdbcType=VARCHAR}, 
+      #{dicvalue,jdbcType=VARCHAR}, #{seq,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, 
+      #{date,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jaunty.domain.entity.SDictionary">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into s_dictionary
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="dictype != null">
+        dicType,
+      </if>
+      <if test="diccode != null">
+        dicCode,
+      </if>
+      <if test="dicvalue != null">
+        dicValue,
+      </if>
+      <if test="seq != null">
+        seq,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="date != null">
+        `date`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pid != null">
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="dictype != null">
+        #{dictype,jdbcType=INTEGER},
+      </if>
+      <if test="diccode != null">
+        #{diccode,jdbcType=VARCHAR},
+      </if>
+      <if test="dicvalue != null">
+        #{dicvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="seq != null">
+        #{seq,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null">
+        #{date,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jaunty.domain.entity.SDictionary">
+    update s_dictionary
+    <set>
+      <if test="pid != null">
+        pid = #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="dictype != null">
+        dicType = #{dictype,jdbcType=INTEGER},
+      </if>
+      <if test="diccode != null">
+        dicCode = #{diccode,jdbcType=VARCHAR},
+      </if>
+      <if test="dicvalue != null">
+        dicValue = #{dicvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="seq != null">
+        seq = #{seq,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null">
+        `date` = #{date,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jaunty.domain.entity.SDictionary">
+    update s_dictionary
+    set pid = #{pid,jdbcType=INTEGER},
+      dicType = #{dictype,jdbcType=INTEGER},
+      dicCode = #{diccode,jdbcType=VARCHAR},
+      dicValue = #{dicvalue,jdbcType=VARCHAR},
+      seq = #{seq,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      `date` = #{date,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -4,7 +4,7 @@ spring:
   #数据库连接信息
   datasource:
     username: root
-    password: root
+    password: 1qaz!QAZ
     url: jdbc:mysql://127.0.0.1:3306/jaunty-light?autoReconnect=true&characterEncoding=UTF-8&useUnicode=true&serverTimezone=Asia/Shanghai
     driver-class-name: com.mysql.cj.jdbc.Driver
 
