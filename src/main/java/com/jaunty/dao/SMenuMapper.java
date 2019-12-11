@@ -1,9 +1,7 @@
 package com.jaunty.dao;
 
 import com.jaunty.domain.entity.SMenu;
-import org.apache.ibatis.annotations.Mapper;
 
-@Mapper
 public interface SMenuMapper {
     int deleteByPrimaryKey(Long id);
 

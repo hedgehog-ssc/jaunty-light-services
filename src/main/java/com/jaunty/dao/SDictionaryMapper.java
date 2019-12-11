@@ -1,9 +1,7 @@
 package com.jaunty.dao;
 
 import com.jaunty.domain.entity.SDictionary;
-import org.apache.ibatis.annotations.Mapper;
 
-@Mapper
 public interface SDictionaryMapper {
     int deleteByPrimaryKey(Long id);
 
