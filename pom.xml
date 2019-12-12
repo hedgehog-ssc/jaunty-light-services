@@ -26,7 +26,7 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- SpringBoot启动器-->
+        <!-- SpringBoot启动器 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
@@ -38,6 +38,20 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- mybatis增强工具 -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+
+        <!-- 代码生成器依赖 -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-generator</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+
         <!-- jdbc -->
         <dependency>
             <groupId>mysql</groupId>
@@ -45,12 +59,12 @@
             <version>8.0.17</version>
         </dependency>
 
-        <!-- mybatis启动器 -->
-        <dependency>
+        <!-- mybatis启动器：mybatis-plus会维护mybatis依赖，因此这里注释掉 -->
+        <!--<dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
             <version>2.1.0</version>
-        </dependency>
+        </dependency>-->
 
         <!-- 引入Shiro依赖：安全框架 -->
         <dependency>
@@ -81,6 +95,7 @@
             <version>2.9.2</version>
         </dependency>
 
+        <!-- 引入PDF处理工具 -->
         <dependency>
             <groupId>com.itextpdf</groupId>
             <artifactId>itextpdf</artifactId>

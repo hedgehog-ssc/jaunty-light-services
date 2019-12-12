@@ -4,6 +4,19 @@ spring:
   application:
     name: jaunty-light-services #应用名称
 
-mybatis:
+#mybatis:
+#  mapper-locations: classpath:mapper/*Mapper.xml
+#  type-aliases-package: com.jaunty.domain.entity
+
+#mybatis-plus配置
+mybatis-plus:
+  global-config:
+    db-config:
+      id-type: auto #主键类型  0:"数据库ID自增", 1:"用户输入ID",2:"全局唯一ID (数字类型唯一ID)", 3:"全局唯一ID UUID"
+      table-underline: true
+      field-strategy: not_empty #字段策略 0:"忽略判断",1:"非 NULL 判断"),2:"非空判断"
+      db-type: mysql
+      logic-delete-value: 1 #逻辑已删除值（默认为1）
+      logic-not-delete-value: 0 #逻辑未删除值（默认为0）
   mapper-locations: classpath:mapper/*Mapper.xml
-  type-aliases-package: com.jaunty.domain.entity
+  type-aliases-package: com.jaunty.domain.entity #实体扫描
